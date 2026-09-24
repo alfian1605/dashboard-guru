@@ -1,0 +1,1607 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Dashboard Digital Guru | Alfian Haris Budianto</title>
+  <meta name="description" content="Dashboard Digital Guru Alfian Haris Budianto, Guru Informatika SMP Muhammadiyah 2 Balongpanggang.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #102a43;
+      --navy-2: #163b5c;
+      --blue: #1677d2;
+      --blue-light: #eaf4ff;
+      --ink: #243b53;
+      --muted: #627d98;
+      --line: #d9e2ec;
+      --surface: #ffffff;
+      --soft: #f4f8fc;
+      --success: #16803c;
+      --radius: 18px;
+      --shadow: 0 8px 25px rgba(16,42,67,.07);
+      --shadow-hover: 0 16px 35px rgba(16,42,67,.12);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      color: var(--ink);
+      background: #fff;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1160px, calc(100% - 40px));
+      margin: auto;
+    }
+
+    /* =========================
+       CONFIG / DATA
+       ========================= */
+
+    /* GANTI LINK DAN FOTO DI BAGIAN INI */
+
+    /* Foto profil */
+    const-photo {
+      display: none;
+    }
+
+    /* =========================
+       NAVBAR
+       ========================= */
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,.96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-inner {
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .brand {
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+
+    .brand-name {
+      font-weight: 800;
+      color: var(--navy);
+      font-size: .95rem;
+    }
+
+    .brand-role {
+      color: var(--muted);
+      font-size: .68rem;
+      margin-top: 3px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: .78rem;
+      font-weight: 600;
+      color: var(--ink);
+      transition: .2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--blue);
+    }
+
+    .nav-button {
+      padding: 9px 15px;
+      border-radius: 10px;
+      background: var(--blue);
+      color: white !important;
+    }
+
+    /* =========================
+       HERO
+       ========================= */
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      color: white;
+      background:
+        radial-gradient(circle at 85% 15%, rgba(255,255,255,.15), transparent 25%),
+        linear-gradient(135deg, var(--navy), var(--blue));
+      padding: 85px 0;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.06);
+      right: -80px;
+      top: -120px;
+    }
+
+    .hero-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.35fr .65fr;
+      gap: 55px;
+      align-items: center;
+    }
+
+    .hero-label {
+      display: inline-block;
+      padding: 7px 12px;
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 999px;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      background: rgba(255,255,255,.08);
+    }
+
+    .hero h1 {
+      margin-top: 18px;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1.1;
+      font-weight: 800;
+      letter-spacing: -.035em;
+    }
+
+    .hero-role {
+      margin-top: 12px;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .hero-school {
+      margin-top: 4px;
+      opacity: .88;
+      font-size: .92rem;
+    }
+
+    .hero-tagline {
+      max-width: 650px;
+      margin-top: 27px;
+      font-size: 1.15rem;
+      line-height: 1.6;
+      font-weight: 600;
+    }
+
+    .hero-description {
+      max-width: 650px;
+      margin-top: 12px;
+      font-size: .9rem;
+      line-height: 1.8;
+      opacity: .88;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 19px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-size: .82rem;
+      font-weight: 700;
+      transition: .2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-white {
+      color: var(--navy);
+      background: white;
+    }
+
+    .btn-outline {
+      color: white;
+      border: 1px solid rgba(255,255,255,.4);
+      background: rgba(255,255,255,.08);
+    }
+
+    .hero-photo-wrap {
+      position: relative;
+      width: min(100%, 330px);
+      margin: auto;
+    }
+
+    .hero-photo-wrap::before {
+      content: "";
+      position: absolute;
+      inset: -12px;
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 25px;
+    }
+
+    .hero-photo {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 4.6;
+      object-fit: cover;
+      border-radius: 22px;
+      box-shadow: 0 25px 55px rgba(0,0,0,.2);
+    }
+
+    /* =========================
+       SECTION
+       ========================= */
+
+    section {
+      padding: 65px 0;
+    }
+
+    .soft-section {
+      background: var(--soft);
+    }
+
+    .section-heading {
+      max-width: 680px;
+      margin-bottom: 30px;
+    }
+
+    .eyebrow {
+      color: var(--blue);
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      margin-top: 7px;
+      font-size: clamp(1.55rem, 3vw, 2.1rem);
+      line-height: 1.2;
+      font-weight: 800;
+      letter-spacing: -.025em;
+    }
+
+    .section-copy {
+      margin-top: 9px;
+      color: var(--muted);
+      font-size: .9rem;
+      line-height: 1.7;
+    }
+
+    /* =========================
+       CARD
+       ========================= */
+
+    .grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .grid-4 {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: var(--shadow);
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .icon-box {
+      width: 46px;
+      height: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 13px;
+      background: var(--blue-light);
+      color: var(--blue);
+      font-size: 1.3rem;
+    }
+
+    .card h3 {
+      margin-top: 15px;
+      font-size: .98rem;
+      font-weight: 700;
+    }
+
+    .card p {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: .82rem;
+      line-height: 1.65;
+    }
+
+    .card-link {
+      display: inline-flex;
+      margin-top: 17px;
+      color: var(--blue);
+      text-decoration: none;
+      font-size: .78rem;
+      font-weight: 700;
+    }
+
+    .card-link:hover {
+      text-decoration: underline;
+    }
+
+    /* =========================
+       PORTFOLIO
+       ========================= */
+
+    .portfolio-card {
+      display: flex;
+      gap: 16px;
+    }
+
+    .portfolio-card h3 {
+      margin-top: 0;
+    }
+
+    /* =========================
+       ABOUT
+       ========================= */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: .75fr 1.25fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .about-photo {
+      width: 100%;
+      max-width: 360px;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 22px;
+      box-shadow: 0 15px 35px rgba(16,42,67,.1);
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 22px;
+    }
+
+    .tag {
+      padding: 7px 11px;
+      border-radius: 999px;
+      border: 1px solid #c8def5;
+      background: #f2f8ff;
+      color: #245b8f;
+      font-size: .7rem;
+      font-weight: 600;
+    }
+
+    /* =========================
+       FOOTER
+       ========================= */
+
+    footer {
+      background: var(--navy);
+      color: white;
+      padding: 38px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .footer-name {
+      font-weight: 700;
+    }
+
+    .footer-role {
+      margin-top: 3px;
+      font-size: .78rem;
+      opacity: .8;
+    }
+
+    .footer-copy {
+      margin-top: 12px;
+      font-size: .67rem;
+      opacity: .55;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 8px;
+    }
+
+    .footer-link {
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      background: rgba(255,255,255,.1);
+      text-decoration: none;
+      transition: .2s;
+    }
+
+    .footer-link:hover {
+      background: rgba(255,255,255,.2);
+      transform: translateY(-2px);
+    }
+
+    /* =========================
+       RESPONSIVE
+       ========================= */
+
+    @media(max-width:900px) {
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .hero-photo-wrap {
+        order: -1;
+        max-width: 260px;
+      }
+
+      .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-photo {
+        margin: auto;
+      }
+    }
+
+    @media(max-width:600px) {
+
+      .container {
+        width: min(100% - 30px, 1160px);
+      }
+
+      section {
+        padding: 48px 0;
+      }
+
+      .hero {
+        padding: 55px 0;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero-tagline {
+        font-size: 1rem;
+      }
+
+      .grid-2,
+      .grid-3,
+      .grid-4 {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- =========================================================
+     NAVBAR
+     ========================================================= -->
+
+<nav class="navbar">
+
+  <div class="container nav-inner">
+
+    <a href="#home" class="brand">
+      <span class="brand-name">Alfian Haris Budianto, S.M., Gr.</span>
+      <span class="brand-role">Guru Informatika</span>
+    </a>
+
+    <div class="nav-links">
+
+      <a href="#pembelajaran">Pembelajaran</a>
+
+      <a href="#perangkat">Perangkat</a>
+
+      <a href="#administrasi">Administrasi</a>
+
+      <a href="#portofolio">Portofolio</a>
+
+      <a href="#tentang" class="nav-button">Profil</a>
+
+    </div>
+
+  </div>
+
+</nav>
+
+
+<!-- =========================================================
+     HERO
+     ========================================================= -->
+
+<header class="hero" id="home">
+
+  <div class="container">
+
+    <div class="hero-grid">
+
+      <div>
+
+        <span class="hero-label">
+          DIGITAL TEACHER HUB
+        </span>
+
+        <h1>
+          Alfian Haris Budianto, S.M., Gr.
+        </h1>
+
+        <div class="hero-role">
+          Guru Informatika
+        </div>
+
+        <div class="hero-school">
+          SMP Muhammadiyah 2 Balongpanggang
+        </div>
+
+        <p class="hero-tagline">
+          Ruang digital untuk pembelajaran, perangkat ajar, administrasi, dan karya.
+        </p>
+
+        <p class="hero-description">
+          Website ini menjadi ruang digital untuk mendukung proses pembelajaran Informatika,
+          menyediakan perangkat ajar, mengelola aktivitas pembelajaran,
+          serta mendokumentasikan karya dan pengembangan profesional.
+        </p>
+
+        <div class="hero-buttons">
+
+          <a href="#pembelajaran" class="btn btn-white">
+            Jelajahi Pembelajaran
+          </a>
+
+          <a href="#tentang" class="btn btn-outline">
+            Tentang Saya
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="hero-photo-wrap">
+
+        <!-- GANTI URL FOTO DI SINI -->
+
+        <img
+          class="hero-photo"
+          src="GANTI_DENGAN_URL_FOTO_ANDA"
+          alt="Foto Alfian Haris Budianto"
+        >
+
+      </div>
+
+    </div>
+
+  </div>
+
+</header>
+
+
+<!-- =========================================================
+     AKSES UTAMA
+     ========================================================= -->
+
+<section id="akses">
+
+  <div class="container">
+
+    <div class="section-heading">
+
+      <div class="eyebrow">
+        AKSES UTAMA
+      </div>
+
+      <h2 class="section-title">
+        Pusat Aktivitas Pembelajaran
+      </h2>
+
+      <p class="section-copy">
+        Akses cepat menuju perangkat pembelajaran, materi, administrasi,
+        evaluasi, dan portofolio.
+      </p>
+
+    </div>
+
+
+    <div class="grid grid-3">
+
+
+      <!-- PERANGKAT -->
+
+      <article class="card">
+
+        <div class="icon-box">📚</div>
+
+        <h3>Perangkat Pembelajaran</h3>
+
+        <p>
+          CP, ATP, modul ajar, LKPD, bahan ajar, dan asesmen.
+        </p>
+
+        <!-- GANTI LINK -->
+        <a
+          href="GANTI_LINK_GOOGLE_SITES_PERANGKAT"
+          class="card-link"
+          target="_blank"
+        >
+          Lihat Perangkat →
+        </a>
+
+      </article>
+
+
+      <!-- ABSENSI -->
+
+      <article class="card">
+
+        <div class="icon-box">📝</div>
+
+        <h3>Absensi</h3>
+
+        <p>
+          Catat dan pantau kehadiran murid.
+        </p>
+
+        <!-- GANTI LINK GOOGLE FORM -->
+        <a
+          href="GANTI_LINK_GOOGLE_FORM_ABSENSI"
+          class="card-link"
+          target="_blank"
+        >
+          Buka Absensi →
+        </a>
+
+      </article>
+
+
+      <!-- MATERI -->
+
+      <article class="card">
+
+        <div class="icon-box">💻</div>
+
+        <h3>Materi Pembelajaran</h3>
+
+        <p>
+          Materi Informatika untuk kelas VII, VIII, dan IX.
+        </p>
+
+        <!-- GANTI LINK -->
+        <a
+          href="GANTI_LINK_GOOGLE_SITES_MATERI"
+          class="card-link"
+          target="_blank"
+        >
+          Lihat Materi →
+        </a>
+
+      </article>
+
+
+      <!-- TUGAS -->
+
+      <article class="card">
+
+        <div class="icon-box">📋</div>
+
+        <h3>Tugas & LKPD</h3>
+
+        <p>
+          Tugas dan lembar kerja pembelajaran.
+        </p>
+
+        <!-- GANTI LINK -->
+        <a
+          href="GANTI_LINK_GOOGLE_SITES_TUGAS"
+          class="card-link"
+          target="_blank"
+        >
+          Lihat Tugas →
+        </a>
+
+      </article>
+
+
+      <!-- EVALUASI -->
+
+      <article class="card">
+
+        <div class="icon-box">📊</div>
+
+        <h3>Evaluasi</h3>
+
+        <p>
+          Evaluasi dan asesmen pembelajaran Informatika.
+        </p>
+
+        <!-- GANTI LINK GOOGLE FORM -->
+        <a
+          href="GANTI_LINK_GOOGLE_FORM_EVALUASI"
+          class="card-link"
+          target="_blank"
+        >
+          Buka Evaluasi →
+        </a>
+
+      </article>
+
+
+      <!-- PORTOFOLIO -->
+
+      <article class="card">
+
+        <div class="icon-box">🏆</div>
+
+        <h3>Portofolio</h3>
+
+        <p>
+          Karya, praktik pembelajaran, dan dokumentasi.
+        </p>
+
+        <!-- GANTI LINK -->
+        <a
+          href="GANTI_LINK_GOOGLE_SITES_PORTOFOLIO"
+          class="card-link"
+          target="_blank"
+        >
+          Lihat Portofolio →
+        </a>
+
+      </article>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     PEMBELAJARAN
+     ========================================================= -->
+
+<section id="pembelajaran" class="soft-section">
+
+  <div class="container">
+
+    <div class="section-heading">
+
+      <div class="eyebrow">
+        PEMBELAJARAN INFORMATIKA
+      </div>
+
+      <h2 class="section-title">
+        Pusat Pembelajaran
+      </h2>
+
+      <p class="section-copy">
+        Pilih kelas untuk mengakses materi, tugas, LKPD, dan evaluasi pembelajaran Informatika.
+      </p>
+
+    </div>
+
+
+    <div class="grid grid-3">
+
+
+      <!-- KELAS VII -->
+
+      <article class="card">
+
+        <div class="icon-box">💻</div>
+
+        <h3>Kelas VII</h3>
+
+        <p>
+          Materi, tugas, LKPD, dan evaluasi Informatika kelas VII.
+        </p>
+
+        <!-- GANTI LINK GOOGLE SITES KELAS VII -->
+        <a
+          href="GANTI_LINK_KELAS_VII"
+          class="card-link"
+          target="_blank"
+        >
+          Masuk Kelas →
+        </a>
+
+      </article>
+
+
+      <!-- KELAS VIII -->
+
+      <article class="card">
+
+        <div class="icon-box">⚙️</div>
+
+        <h3>Kelas VIII</h3>
+
+        <p>
+          Materi, tugas, LKPD, dan evaluasi Informatika kelas VIII.
+        </p>
+
+        <!-- GANTI LINK GOOGLE SITES KELAS VIII -->
+        <a
+          href="GANTI_LINK_KELAS_VIII"
+          class="card-link"
+          target="_blank"
+        >
+          Masuk Kelas →
+        </a>
+
+      </article>
+
+
+      <!-- KELAS IX -->
+
+      <article class="card">
+
+        <div class="icon-box">💡</div>
+
+        <h3>Kelas IX</h3>
+
+        <p>
+          Materi, tugas, LKPD, dan evaluasi Informatika kelas IX.
+        </p>
+
+        <!-- GANTI LINK GOOGLE SITES KELAS IX -->
+        <a
+          href="GANTI_LINK_KELAS_IX"
+          class="card-link"
+          target="_blank"
+        >
+          Masuk Kelas →
+        </a>
+
+      </article>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     ADMINISTRASI
+     ========================================================= -->
+
+<section id="administrasi">
+
+  <div class="container">
+
+    <div class="section-heading">
+
+      <div class="eyebrow">
+        ADMINISTRASI PEMBELAJARAN
+      </div>
+
+      <h2 class="section-title">
+        Administrasi Pembelajaran
+      </h2>
+
+    </div>
+
+
+    <div class="grid grid-4">
+
+
+      <article class="card">
+
+        <div class="icon-box">📅</div>
+
+        <h3>Absensi</h3>
+
+        <p>
+          Kehadiran murid.
+        </p>
+
+        <a
+          href="GANTI_LINK_GOOGLE_FORM_ABSENSI"
+          class="card-link"
+          target="_blank"
+        >
+          Buka →
+        </a>
+
+      </article>
+
+
+      <article class="card">
+
+        <div class="icon-box">📄</div>
+
+        <h3>Tugas</h3>
+
+        <p>
+          Pengumpulan tugas.
+        </p>
+
+        <a
+          href="GANTI_LINK_GOOGLE_SITES_TUGAS"
+          class="card-link"
+          target="_blank"
+        >
+          Buka →
+        </a>
+
+      </article>
+
+
+      <article class="card">
+
+        <div class="icon-box">📋</div>
+
+        <h3>Asesmen</h3>
+
+        <p>
+          Evaluasi pembelajaran.
+        </p>
+
+        <a
+          href="GANTI_LINK_GOOGLE_FORM_EVALUASI"
+          class="card-link"
+          target="_blank"
+        >
+          Buka →
+        </a>
+
+      </article>
+
+
+      <article class="card">
+
+        <div class="icon-box">🔄</div>
+
+        <h3>Remedial & Pengayaan</h3>
+
+        <p>
+          Tindak lanjut pembelajaran.
+        </p>
+
+        <a
+          href="GANTI_LINK_REMEDIAL_PENGAYAAN"
+          class="card-link"
+          target="_blank"
+        >
+          Buka →
+        </a>
+
+      </article>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     PERANGKAT PEMBELAJARAN
+     ========================================================= -->
+
+<section id="perangkat" class="soft-section">
+
+  <div class="container">
+
+    <div class="section-heading">
+
+      <div class="eyebrow">
+        PERANGKAT PEMBELAJARAN
+      </div>
+
+      <h2 class="section-title">
+        Perangkat Pembelajaran
+      </h2>
+
+      <p class="section-copy">
+        Dokumen dan perangkat yang mendukung proses pembelajaran Informatika.
+      </p>
+
+    </div>
+
+
+    <div class="grid grid-3">
+
+
+      <article class="card">
+
+        <div class="icon-box">📘</div>
+
+        <h3>CP & ATP</h3>
+
+        <p>
+          Capaian Pembelajaran dan Alur Tujuan Pembelajaran.
+        </p>
+
+        <a
+          href="GANTI_LINK_DRIVE_CP_ATP"
+          class="card-link"
+          target="_blank"
+        >
+          Lihat →
+        </a>
+
+      </article>
+
+
+      <article class="card">
+
+        <div class="icon-box">📖</div>
+
+        <h3>Modul Ajar</h3>
+
+        <p>
+          Modul ajar pembelajaran Informatika.
+        </p>
+
+        <a
+          href="GANTI_LINK_DRIVE_MODUL_AJAR"
+          class="card-link"
+          target="_blank"
+        >
+          Lihat →
+        </a>
+
+      </article>
+
+
+      <article class="card">
+
+        <div class="icon-box">📝</div>
+
+        <h3>LKPD</h3>
+
+        <p>
+          Lembar kerja pembelajaran.
+        </p>
+
+        <a
+          href="GANTI_LINK_DRIVE_LKPD"
+          class="card-link"
+          target="_blank"
+        >
+          Lihat →
+        </a>
+
+      </article>
+
+
+      <article class="card">
+
+        <div class="icon-box">📚</div>
+
+        <h3>Bahan Ajar</h3>
+
+        <p>
+          Materi dan bahan pendukung pembelajaran.
+        </p>
+
+        <a
+          href="GANTI_LINK_DRIVE_BAHAN_AJAR"
+          class="card-link"
+          target="_blank"
+        >
+          Lihat →
+        </a>
+
+      </article>
+
+
+      <article class="card">
+
+        <div class="icon-box">📊</div>
+
+        <h3>Asesmen</h3>
+
+        <p>
+          Kisi-kisi, soal, rubrik, dan instrumen penilaian.
+        </p>
+
+        <a
+          href="GANTI_LINK_DRIVE_ASESMEN"
+          class="card-link"
+          target="_blank"
+        >
+          Lihat →
+        </a>
+
+      </article>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     PORTOFOLIO
+     ========================================================= -->
+
+<section id="portofolio">
+
+  <div class="container">
+
+    <div class="section-heading">
+
+      <div class="eyebrow">
+        PORTOFOLIO & KARYA
+      </div>
+
+      <h2 class="section-title">
+        Karya dan Pengembangan Profesional
+      </h2>
+
+      <p class="section-copy">
+        Dokumentasi karya, praktik pembelajaran, pengembangan profesional,
+        dan kegiatan pendidikan.
+      </p>
+
+    </div>
+
+
+    <div class="grid grid-2">
+
+
+      <article class="card portfolio-card">
+
+        <div class="icon-box">📚</div>
+
+        <div>
+
+          <h3>Karya Digital</h3>
+
+          <p>
+            Media dan produk pembelajaran digital.
+          </p>
+
+          <a
+            href="GANTI_LINK_KARYA_DIGITAL"
+            class="card-link"
+            target="_blank"
+          >
+            Lihat Karya →
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <article class="card portfolio-card">
+
+        <div class="icon-box">💡</div>
+
+        <div>
+
+          <h3>Praktik Pembelajaran</h3>
+
+          <p>
+            Dokumentasi praktik pembelajaran Informatika.
+          </p>
+
+          <a
+            href="GANTI_LINK_PRAKTIK_PEMBELAJARAN"
+            class="card-link"
+            target="_blank"
+          >
+            Lihat →
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <article class="card portfolio-card">
+
+        <div class="icon-box">🏅</div>
+
+        <div>
+
+          <h3>Pengembangan Profesional</h3>
+
+          <p>
+            Pelatihan, workshop, sertifikat, dan pengembangan kompetensi.
+          </p>
+
+          <a
+            href="GANTI_LINK_PENGEMBANGAN_PROFESIONAL"
+            class="card-link"
+            target="_blank"
+          >
+            Lihat →
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <article class="card portfolio-card">
+
+        <div class="icon-box">📷</div>
+
+        <div>
+
+          <h3>Dokumentasi Kegiatan</h3>
+
+          <p>
+            Kegiatan sekolah dan pembinaan murid.
+          </p>
+
+          <a
+            href="GANTI_LINK_DOKUMENTASI"
+            class="card-link"
+            target="_blank"
+          >
+            Lihat →
+          </a>
+
+        </div>
+
+      </article>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     INFORMASI TERBARU
+     ========================================================= -->
+
+<section id="informasi" class="soft-section">
+
+  <div class="container">
+
+    <div class="section-heading">
+
+      <div class="eyebrow">
+        INFORMASI TERBARU
+      </div>
+
+      <h2 class="section-title">
+        Informasi Pembelajaran
+      </h2>
+
+    </div>
+
+
+    <div class="grid grid-3">
+
+
+      <article class="card">
+
+        <div class="icon-box">📢</div>
+
+        <h3>Materi Terbaru</h3>
+
+        <p>
+          Informasi materi pembelajaran terbaru.
+        </p>
+
+        <a
+          href="GANTI_LINK_MATERI_TERBARU"
+          class="card-link"
+          target="_blank"
+        >
+          Lihat →
+        </a>
+
+      </article>
+
+
+      <article class="card">
+
+        <div class="icon-box">📓</div>
+
+        <h3>Tugas</h3>
+
+        <p>
+          Informasi tugas dan pengumpulan.
+        </p>
+
+        <a
+          href="GANTI_LINK_TUGAS_TERBARU"
+          class="card-link"
+          target="_blank"
+        >
+          Lihat →
+        </a>
+
+      </article>
+
+
+      <article class="card">
+
+        <div class="icon-box">📸</div>
+
+        <h3>Dokumentasi</h3>
+
+        <p>
+          Dokumentasi kegiatan pembelajaran.
+        </p>
+
+        <a
+          href="GANTI_LINK_DOKUMENTASI_TERBARU"
+          class="card-link"
+          target="_blank"
+        >
+          Lihat →
+        </a>
+
+      </article>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     TENTANG SAYA
+     ========================================================= -->
+
+<section id="tentang">
+
+  <div class="container">
+
+    <div class="about-grid">
+
+
+      <div>
+
+        <!-- GANTI URL FOTO DI SINI -->
+
+        <img
+          class="about-photo"
+          src="GANTI_DENGAN_URL_FOTO_ANDA"
+          alt="Alfian Haris Budianto"
+        >
+
+      </div>
+
+
+      <div>
+
+        <div class="eyebrow">
+          TENTANG SAYA
+        </div>
+
+        <h2 class="section-title">
+          Alfian Haris Budianto, S.M., Gr.
+        </h2>
+
+        <p class="section-copy">
+
+          Guru Informatika di SMP Muhammadiyah 2 Balongpanggang
+          yang berfokus pada pembelajaran teknologi, kreativitas digital,
+          dan pemanfaatan teknologi dalam proses pembelajaran.
+
+          Website ini menjadi ruang digital untuk mendukung pembelajaran,
+          menyediakan perangkat ajar, mengelola aktivitas pembelajaran,
+          serta mendokumentasikan karya dan pengembangan profesional.
+
+        </p>
+
+
+        <div class="tags">
+
+          <span class="tag">Informatika</span>
+
+          <span class="tag">Teknologi Pendidikan</span>
+
+          <span class="tag">Literasi Digital</span>
+
+          <span class="tag">Kreativitas Digital</span>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     FOOTER
+     ========================================================= -->
+
+<footer>
+
+  <div class="container">
+
+    <div class="footer-inner">
+
+
+      <div>
+
+        <div class="footer-name">
+          Alfian Haris Budianto, S.M., Gr.
+        </div>
+
+        <div class="footer-role">
+          Guru Informatika • SMP Muhammadiyah 2 Balongpanggang
+        </div>
+
+        <div class="footer-copy">
+          © 2026 Alfian Haris Budianto. All rights reserved.
+        </div>
+
+      </div>
+
+
+      <div class="footer-links">
+
+
+        <!-- GANTI LINK WHATSAPP -->
+
+        <a
+          href="GANTI_LINK_WHATSAPP"
+          class="footer-link"
+          target="_blank"
+          aria-label="WhatsApp"
+        >
+          💬
+        </a>
+
+
+        <!-- GANTI EMAIL -->
+
+        <a
+          href="mailto:GANTI_EMAIL"
+          class="footer-link"
+          aria-label="Email"
+        >
+          ✉️
+        </a>
+
+
+        <!-- GANTI INSTAGRAM -->
+
+        <a
+          href="GANTI_LINK_INSTAGRAM"
+          class="footer-link"
+          target="_blank"
+          aria-label="Instagram"
+        >
+          📷
+        </a>
+
+
+        <!-- GANTI LINK GOOGLE SITES -->
+
+        <a
+          href="GANTI_LINK_GOOGLE_SITES"
+          class="footer-link"
+          target="_blank"
+          aria-label="Google Sites"
+        >
+          🌐
+        </a>
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+</footer>
+
+
+</div>
+
+</body>
+</html>
+```
