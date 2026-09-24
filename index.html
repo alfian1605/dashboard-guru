@@ -493,7 +493,47 @@
       background: rgba(255,255,255,.2);
       transform: translateY(-2px);
     }
+    /* TENTANG SAYA - PREVIEW */
+    .about-preview {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 40px;
+      align-items: center;
+      background: #ffffff;
+      border: 1px solid #e6edf4;
+      border-radius: 22px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(16,42,67,.06);
+    }
 
+    .about-preview-image img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      object-position: center 70%;
+      border-radius: 18px;
+    }
+
+    .about-preview-content h3 {
+      font-size: 1.5rem;
+      margin-bottom: 6px;
+    }
+
+    .about-role {
+      color: #08447e;
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+
+    .about-preview-content p {
+      color: #627d98;
+      margin-bottom: 12px;
+    }
+
+    .about-preview-content .btn-primary {
+      display: inline-block;
+      margin-top: 10px;
+    }
     /* =========================
        RESPONSIVE
        ========================= */
@@ -530,7 +570,7 @@
         margin: auto;
       }
     }
-
+    
     @media(max-width:600px) {
 
       .container {
@@ -562,6 +602,23 @@
       .footer-inner {
         flex-direction: column;
         align-items: flex-start;
+      }
+
+   @media (max-width: 800px) {
+     .about-preview {
+        grid-template-columns: 1fr;
+        padding: 22px;
+      }
+
+      .about-preview-image img {
+        max-width: 280px;
+        margin: 0 auto;
+        display: block;
+      }
+
+      .about-preview-content h3 {
+        font-size: 1.3rem;
+      }
       }
     }
   </style>
@@ -1445,72 +1502,57 @@
 </section>
 
 
-<!-- =========================================================
-     TENTANG SAYA
-     ========================================================= -->
-
-<section id="tentang">
-
+<!-- TENTANG SAYA -->
+<section id="tentang" class="about">
   <div class="container">
 
-    <div class="about-grid">
+    <div class="section-heading">
+      <span class="section-label">TENTANG SAYA</span>
+      <h2>Kenali Saya Lebih Dekat</h2>
+      <p>
+        Pendidik yang terus belajar, berkarya, dan memanfaatkan
+        teknologi untuk menghadirkan pembelajaran yang bermakna.
+      </p>
+    </div>
 
+    <div class="about-preview">
 
-      <div>
-
-        <!-- GANTI URL FOTO DI SINI -->
-
+      <div class="about-preview-image">
         <img
-          class="about-photo"
           src="foto-tentangsaya.jpeg"
           alt="Alfian Haris Budianto"
         >
-
       </div>
 
+      <div class="about-preview-content">
 
-      <div>
+        <h3>Alfian Haris Budianto, S.M., Gr.</h3>
 
-        <div class="eyebrow">
-          TENTANG SAYA
-        </div>
-
-        <h2 class="section-title">
-          Alfian Haris Budianto, S.M., Gr.
-        </h2>
-
-        <p class="section-copy">
-
-          Guru Informatika di SMP Muhammadiyah 2 Balongpanggang
-          yang berfokus pada pembelajaran teknologi, kreativitas digital,
-          dan pemanfaatan teknologi dalam proses pembelajaran.
-
-          Website ini menjadi ruang digital untuk mendukung pembelajaran,
-          menyediakan perangkat ajar, mengelola aktivitas pembelajaran,
-          serta mendokumentasikan karya dan pengembangan profesional.
-
+        <p class="about-role">
+          Guru Informatika · SMP Muhammadiyah 2 Balongpanggang
         </p>
 
+        <p>
+          Saya adalah pendidik yang memiliki ketertarikan pada
+          Informatika, teknologi digital, media pembelajaran,
+          dan pengembangan kreativitas murid.
+        </p>
 
-        <div class="tags">
+        <p>
+          Selain mengajar, saya juga aktif dalam pengembangan media
+          digital, dokumentasi dan informasi sekolah, serta berbagai
+          kegiatan pengembangan diri.
+        </p>
 
-          <span class="tag">Informatika</span>
-
-          <span class="tag">Teknologi Pendidikan</span>
-
-          <span class="tag">Literasi Digital</span>
-
-          <span class="tag">Kreativitas Digital</span>
-
-        </div>
-
+        <a href="tentang.html" class="btn-primary">
+          Lihat Profil Lengkap →
+        </a>
 
       </div>
 
     </div>
 
   </div>
-
 </section>
 
 
