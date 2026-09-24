@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Tentang Saya | Alfian Haris Budianto</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f7faff;
+      color: #102a43;
+      line-height: 1.7;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(1100px, 92%);
+      margin: auto;
+    }
+
+    /* NAVBAR */
+    nav {
+      background: rgba(255,255,255,.95);
+      border-bottom: 1px solid #e7eef5;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: #08447e;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: .9rem;
+      font-weight: 600;
+      color: #486581;
+      transition: .2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links .active {
+      color: #08447e;
+    }
+
+    /* HERO */
+    .page-header {
+      padding: 80px 0 60px;
+      background: linear-gradient(135deg, #eef6ff, #ffffff);
+    }
+
+    .eyebrow {
+      color: #08447e;
+      font-weight: 700;
+      font-size: .9rem;
+      margin-bottom: 10px;
+    }
+
+    .page-header h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      line-height: 1.15;
+      margin-bottom: 18px;
+      letter-spacing: -.03em;
+    }
+
+    .page-header p {
+      max-width: 700px;
+      color: #627d98;
+      font-size: 1rem;
+    }
+
+    /* PROFILE */
+    .profile {
+      padding: 70px 0;
+    }
+
+    .profile-grid {
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 55px;
+      align-items: start;
+    }
+
+    .profile-photo {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      object-position: center 70%;
+      border-radius: 24px;
+      box-shadow: 0 18px 45px rgba(16,42,67,.12);
+    }
+
+    .profile-content h2 {
+      font-size: 1.8rem;
+      margin-bottom: 18px;
+    }
+
+    .profile-content p {
+      color: #486581;
+      margin-bottom: 16px;
+    }
+
+    /* INFO */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-top: 30px;
+    }
+
+    .info-card {
+      background: white;
+      border: 1px solid #e6edf4;
+      border-radius: 16px;
+      padding: 20px;
+    }
+
+    .info-card small {
+      display: block;
+      color: #829ab1;
+      margin-bottom: 5px;
+    }
+
+    .info-card strong {
+      color: #102a43;
+    }
+
+    /* SECTION */
+    section {
+      padding: 70px 0;
+    }
+
+    .section-title {
+      margin-bottom: 30px;
+    }
+
+    .section-title h2 {
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+    }
+
+    .section-title p {
+      color: #627d98;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #e6edf4;
+      border-radius: 18px;
+      padding: 25px;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 1.05rem;
+    }
+
+    .card p {
+      color: #627d98;
+      font-size: .92rem;
+    }
+
+    /* BACK BUTTON */
+    .back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 30px;
+      padding: 11px 18px;
+      background: #08447e;
+      color: white;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: .9rem;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #102a43;
+      color: #d9e2ec;
+      padding: 35px 0;
+      margin-top: 20px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+    }
+
+    footer p {
+      font-size: .85rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 18px;
+    }
+
+    .footer-links a {
+      font-size: .85rem;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 800px) {
+      .nav-links {
+        display: none;
+      }
+
+      .profile-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .profile-photo {
+        max-width: 320px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="container nav-inner">
+      <a href="index.html" class="brand">
+        Alfian Haris Budianto
+      </a>
+
+      <div class="nav-links">
+        <a href="index.html">Beranda</a>
+        <a href="tentang.html" class="active">Tentang Saya</a>
+        <a href="index.html#pembelajaran">Pembelajaran</a>
+        <a href="index.html#portofolio">Portofolio</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <header class="page-header">
+    <div class="container">
+      <div class="eyebrow">PROFIL GURU</div>
+
+      <h1>Tentang Saya</h1>
+
+      <p>
+        Mengenal lebih dekat profil, aktivitas, pengalaman, dan karya
+        dalam perjalanan saya sebagai pendidik dan guru Informatika.
+      </p>
+    </div>
+  </header>
+
+  <!-- PROFILE -->
+  <main>
+    <section class="profile">
+      <div class="container">
+
+        <div class="profile-grid">
+
+          <div>
+            <img
+              src="foto-tentangsaya.jpeg"
+              alt="Alfian Haris Budianto"
+              class="profile-photo"
+            >
+          </div>
+
+          <div class="profile-content">
+
+            <h2>Alfian Haris Budianto, S.M., Gr.</h2>
+
+            <p>
+              Saya adalah seorang pendidik yang mengajar Informatika
+              di SMP Muhammadiyah 2 Balongpanggang, Gresik.
+            </p>
+
+            <p>
+              Dalam pembelajaran, saya berusaha menghadirkan pengalaman
+              belajar yang dekat dengan kehidupan murid, memanfaatkan
+              teknologi digital, serta mendorong kreativitas dan
+              kemandirian.
+            </p>
+
+            <p>
+              Selain mengajar, saya juga terlibat dalam berbagai kegiatan
+              sekolah, pengembangan media digital, pengelolaan konten
+              informasi, serta kegiatan pengembangan diri dan organisasi.
+            </p>
+
+            <div class="info-grid">
+
+              <div class="info-card">
+                <small>Nama</small>
+                <strong>Alfian Haris Budianto</strong>
+              </div>
+
+              <div class="info-card">
+                <small>Gelar</small>
+                <strong>S.M., Gr.</strong>
+              </div>
+
+              <div class="info-card">
+                <small>Bidang</small>
+                <strong>Informatika</strong>
+              </div>
+
+              <div class="info-card">
+                <small>Satuan Pendidikan</small>
+                <strong>SMP Muhammadiyah 2 Balongpanggang</strong>
+              </div>
+
+            </div>
+
+            <a href="index.html" class="back">
+              ← Kembali ke Beranda
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PERAN -->
+    <section>
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Peran & Aktivitas</h2>
+          <p>
+            Beberapa aktivitas yang menjadi bagian dari perjalanan
+            saya di lingkungan pendidikan.
+          </p>
+        </div>
+
+        <div class="cards">
+
+          <div class="card">
+            <h3>👨‍🏫 Guru Informatika</h3>
+            <p>
+              Mengembangkan pembelajaran Informatika yang kontekstual,
+              kreatif, dan memanfaatkan teknologi digital.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>💻 Pengembang Media Digital</h3>
+            <p>
+              Membuat berbagai media, desain, dan perangkat digital
+              untuk mendukung kegiatan pembelajaran dan sekolah.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>📱 Pengelola Konten</h3>
+            <p>
+              Terlibat dalam dokumentasi dan pengelolaan informasi
+              serta konten digital kegiatan sekolah.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-inner">
+
+      <p>
+        © 2026 Alfian Haris Budianto
+      </p>
+
+      <div class="footer-links">
+        <a href="index.html">Beranda</a>
+        <a href="tentang.html">Tentang Saya</a>
+      </div>
+
+    </div>
+  </footer>
+
+</body>
+</html>
