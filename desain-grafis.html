@@ -83,6 +83,16 @@
     @media(max-width:1000px){.gallery{grid-template-columns:repeat(3,minmax(0,1fr))}.hero-grid{grid-template-columns:1fr .3fr}.hero-art{font-size:4.5rem}}
     @media(max-width:720px){.nav-links{gap:12px}.nav-links a{font-size:.72rem}.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-grid{grid-template-columns:1fr}.hero-art{display:none}.intro-row{align-items:start;flex-direction:column}.toolbar{align-items:stretch}.search{width:100%}}
     @media(max-width:480px){.container{width:calc(100% - 28px)}.nav-inner{min-height:62px}.nav-links a:not(.active){display:none}.gallery{gap:12px}.work-content{padding:11px}.work-content h3{font-size:.82rem}.work-content p{font-size:.71rem}.card-actions{flex-direction:column}.small-btn{width:100%}.hero{padding:42px 0}.filters{gap:6px}.filter{font-size:.68rem;padding:8px 10px}.footer-inner{align-items:flex-start;flex-direction:column}}
+
+    .gallery-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      border-radius: 12px;
+}
+    
   </style>
 </head>
 <body>
@@ -149,10 +159,13 @@
         Ukuran 1080 x 1350 px (rasio 4:5) cocok untuk galeri ini.
       -->
       <article class="work-card" data-category="Infografis Sekolah" data-search="panduan informasi sekolah infografis contoh">
-        <button class="image-button" type="button" aria-label="Lihat gambar Panduan Informasi Sekolah" data-title="Panduan Informasi Sekolah" data-image="">
-          <div class="placeholder"><span class="symbol">🧭</span><strong>Pratinjau Karya 01</strong><small>Ganti dengan gambar Anda</small></div>
+        <button class="image-button" type="button" aria-label="Lihat gambar Panduan Informasi Sekolah" data-title="Panduan Informasi Sekolah" data-image="https://drive.google.com/file/d/1bokvmL5tK6thpfYSsx7-EYA7xN3Y4fhH/view?usp=sharing">
+          <img
+            src="https://drive.google.com/file/d/1bokvmL5tK6thpfYSsx7-EYA7xN3Y4fhH/view?usp=sharing"
+            alt="Panduan Informasi Sekolah"
+            class="gallery-image">
         </button>
-        <div class="work-content"><span class="category">Infografis Sekolah</span><h3>Panduan Informasi Sekolah</h3><p>Infografis panduan dan informasi untuk warga sekolah.</p><div class="work-meta">Tahun ajaran: 2025/2026</div><div class="card-actions"><button class="small-btn view-detail" type="button">Lihat Detail</button><a class="small-btn primary work-link" href="#" target="_blank" rel="noopener">Lihat Karya ↗</a></div></div>
+        <div class="work-content"><span class="category">Infografis Sekolah</span><h3>Panduan Informasi Sekolah</h3><p>Infografis panduan dan informasi untuk warga sekolah.</p><div class="work-meta">Tahun ajaran: 2025/2026</div><div class="card-actions"><button class="small-btn view-detail" type="button">Lihat Detail</button><a class="small-btn primary work-link" href="https://drive.google.com/file/d/1bokvmL5tK6thpfYSsx7-EYA7xN3Y4fhH/view?usp=sharing" target="_blank" rel="noopener">Lihat Karya ↗</a></div></div>
       </article>
       <article class="work-card" data-category="Infografis Sekolah" data-search="alur layanan tata tertib sekolah informasi">
         <button class="image-button" type="button" aria-label="Lihat gambar Alur Layanan Sekolah" data-title="Alur Layanan Sekolah" data-image="">
